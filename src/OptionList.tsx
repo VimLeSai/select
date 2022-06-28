@@ -318,7 +318,7 @@ const OptionList: React.ForwardRefRenderFunction<RefOptionListProps, OptionListP
 
           // Group
           if (group) {
-            const groupTitle = data.title ?? (isTitleType(label) && label);
+            const groupTitle = data.title ?? (isTitleType(label) ? label.toString() : undefined);
 
             return (
               <div
@@ -359,7 +359,7 @@ const OptionList: React.ForwardRefRenderFunction<RefOptionListProps, OptionListP
 
           return (
             <div
-              {...passedProps}
+              {...pickAttrs(passedProps)}
               aria-selected={selected}
               className={optionClassName}
               title={optionTitle}

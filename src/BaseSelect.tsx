@@ -108,7 +108,6 @@ export interface BaseSelectPrivateProps {
   ) => void;
   /** Trigger when search text match the `tokenSeparators`. Will provide split content */
   onSearchSplit?: (words: string[]) => void;
-  maxLength?: number;
 
   // >>> Dropdown
   OptionList: React.ForwardRefExoticComponent<
@@ -126,6 +125,7 @@ export interface BaseSelectProps extends BaseSelectPrivateProps, React.AriaAttri
   showSearch?: boolean;
   tagRender?: (props: CustomTagProps) => React.ReactElement;
   direction?: 'ltr' | 'rtl';
+  maxLength?: number;
 
   // MISC
   tabIndex?: number;
@@ -638,6 +638,7 @@ const BaseSelect = React.forwardRef((props: BaseSelectProps, ref: React.Ref<Base
     () => [containerRef.current, triggerRef.current?.getPopupElement()],
     triggerOpen,
     onToggleOpen,
+    !!customizeRawInputElement,
   );
 
   // ============================ Context =============================
